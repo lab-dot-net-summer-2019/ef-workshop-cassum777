@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SamuraiApp.Data\SamuraiApp.Data.csproj" />
-    <ProjectReference Include="..\SamuraiApp.Domain\SamuraiApp.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -53,14 +53,14 @@ namespace SomeUI
             var samurai3 = new Samurai { Name = "Samurai3" };
             var samurai4 = new Samurai { Name = "Samurai4" };
             using (var context = new SamuraiContext()) {
-                context.Samurais.AddRange(samurai1, samurai2, samurai3, samurai4);
+                context.Samurai.AddRange(samurai1, samurai2, samurai3, samurai4);
                 context.SaveChanges();
             }
         }
 
         private static void DeleteUsingId(int samuraiId)
         {
-            var samurai = _context.Samurais.Find(samuraiId);
+            var samurai = _context.Samurai.Find(samuraiId);
             _context.Remove(samurai);
             _context.SaveChanges();
             //alternate: call a stored procedure!
@@ -82,8 +82,8 @@ namespace SomeUI
 
         private static void DeleteWhileTracked()
         {
-            var samurai = _context.Samurais.FirstOrDefault(s => s.Name == "Kambei Shimada");
-            _context.Samurais.Remove(samurai);
+            var samurai = _context.Samurai.FirstOrDefault(s => s.Name == "Kambei Shimada");
+            _context.Samurai.Remove(samurai);
             //alternates:
             // _context.Remove(samurai);
             // _context.Entry(samurai).State=EntityState.Deleted;
@@ -93,17 +93,17 @@ namespace SomeUI
 
         private static void DeleteMany()
         {
-            var samurais = _context.Samurais.Where(s => s.Name.Contains("ō"));
-            _context.Samurais.RemoveRange(samurais);
+            var samurais = _context.Samurai.Where(s => s.Name.Contains("ō"));
+            _context.Samurai.RemoveRange(samurais);
             //alternate: _context.RemoveRange(samurais);
             _context.SaveChanges();
         }
 
         private static void DeleteWhileNotTracked()
         {
-            var samurai = _context.Samurais.FirstOrDefault(s => s.Name == "Heihachi Hayashida");
+            var samurai = _context.Samurai.FirstOrDefault(s => s.Name == "Heihachi Hayashida");
             using (var contextNewAppInstance = new SamuraiContext()) {
-                contextNewAppInstance.Samurais.Remove(samurai);
+                contextNewAppInstance.Samurai.Remove(samurai);
                 var t = contextNewAppInstance.Entry(samurai).State;//=EntityState.Deleted;
                 contextNewAppInstance.SaveChanges();
             }
@@ -114,61 +114,61 @@ namespace SomeUI
         {
             var samurai = new Samurai { Name = "Julie" };
             using (var context = new SamuraiContext()) {
-                context.Samurais.Add(samurai);
+                context.Samurai.Add(samurai);
                 context.SaveChanges();
             }
         }
         private static void SimpleSamuraiQuery()
         {
             using (var context = new SamuraiContext()) {
-                var samurais = context.Samurais.ToList();
+                var samurais = context.Samurai.ToList();
                 //var query = context.Samurais;
                 //var samuraisAgain = query.ToList();
-                foreach (var samurai in context.Samurais) {
+                foreach (var samurai in context.Samurai) {
                     Console.WriteLine(samurai.Name);
                 }
             }
         }
         private static void MoreQueries()
         {
-            var samurais_NonParameterizedQuery = _context.Samurais.Where(s => s.Name == "Sampson").ToList();
+            var samurais_NonParameterizedQuery = _context.Samurai.Where(s => s.Name == "Sampson").ToList();
             var name = "Sampson";
-            var samurais_ParameterizedQuery = _context.Samurais.Where(s => s.Name == name).ToList();
-            var samurai_Object = _context.Samurais.FirstOrDefault(s => s.Name == name);
-            var samurais_ObjectFindByKeyValue = _context.Samurais.Find(2);
-            var lastSampson = _context.Samurais.OrderBy(s => s.Id).LastOrDefault(s => s.Name == name);
-            var samuraisJ = _context.Samurais.Where(s => EF.Functions.Like(s.Name, "J%")).ToList();
+            var samurais_ParameterizedQuery = _context.Samurai.Where(s => s.Name == name).ToList();
+            var samurai_Object = _context.Samurai.FirstOrDefault(s => s.Name == name);
+            var samurais_ObjectFindByKeyValue = _context.Samurai.Find(2);
+            var lastSampson = _context.Samurai.OrderBy(s => s.Id).LastOrDefault(s => s.Name == name);
+            var samuraisJ = _context.Samurai.Where(s => EF.Functions.Like(s.Name, "J%")).ToList();
 
         }
 
 
         private static void RetrieveAndUpdateSamurai()
         {
-            var samurai = _context.Samurais.FirstOrDefault();
+            var samurai = _context.Samurai.FirstOrDefault();
             samurai.Name += "San";
             _context.SaveChanges();
         }
         private static void RetrieveAndUpdateMultipleSamurais()
         {
-            var samurais = _context.Samurais.ToList();
+            var samurais = _context.Samurai.ToList();
             samurais.ForEach(s => s.Name += "San");
             _context.SaveChanges();
         }
         private static void MultipleDatabaseOperations()
         {
-            var samurai = _context.Samurais.FirstOrDefault();
+            var samurai = _context.Samurai.FirstOrDefault();
             samurai.Name += "Hiro";
-            _context.Samurais.Add(new Samurai { Name = "Kikuchiyo" });
+            _context.Samurai.Add(new Samurai { Name = "Kikuchiyo" });
             _context.SaveChanges();
         }
 
 
         private static void QueryAndUpdateSamurai_Disconnected()
         {
-            var samurai = _context.Samurais.FirstOrDefault(s => s.Name == "Kikuchiyo");
+            var samurai = _context.Samurai.FirstOrDefault(s => s.Name == "Kikuchiyo");
             samurai.Name += "San";
             using (var newContextInstance = new SamuraiContext()) {
-                newContextInstance.Samurais.Update(samurai);
+                newContextInstance.Samurai.Update(samurai);
                 newContextInstance.SaveChanges();
             }
         }
@@ -177,7 +177,7 @@ namespace SomeUI
             var samurai = new Samurai { Name = "Julie" };
             var samuraiSammy = new Samurai { Name = "Sampson" };
             using (var context = new SamuraiContext()) {
-                context.Samurais.AddRange(samurai, samuraiSammy);
+                context.Samurai.AddRange(samurai, samuraiSammy);
                 context.SaveChanges();
             }
         }
@@ -202,14 +202,14 @@ namespace SomeUI
 
         private static void ModifyingRelatedDataWhenTracked()
         {
-            var samurai = _context.Samurais.Include(s => s.Quotes).FirstOrDefault();
+            var samurai = _context.Samurai.Include(s => s.Quotes).FirstOrDefault();
             samurai.Quotes[0].Text += " Did you hear that?";
             _context.SaveChanges();
         }
 
         private static void ModifyingRelatedDataWhenNotTracked()
         {
-            var samurai = _context.Samurais.Include(s => s.Quotes).FirstOrDefault();
+            var samurai = _context.Samurai.Include(s => s.Quotes).FirstOrDefault();
             var quote = samurai.Quotes[0];
             quote.Text += " Did you hear that?";
             using (var newContext = new SamuraiContext()) {
@@ -222,14 +222,14 @@ namespace SomeUI
 
         private static void FilteringWithRelatedData()
         {
-            var samurais = _context.Samurais
+            var samurais = _context.Samurai
                                    .Where(s => s.Quotes.Any(q => q.Text.Contains("happy")))
                                    .ToList();
         }
 
         private static void ProjectSamuraisWithQuotes()
         {
-            var somePropertiesWithQuotes = _context.Samurais
+            var somePropertiesWithQuotes = _context.Samurai
                 .Select(s => new { s.Id, s.Name, s.Quotes.Count })
                 .ToList();
 
@@ -247,19 +247,19 @@ namespace SomeUI
         }
         private static void ProjectSomeProperties()
         {
-            var someProperties = _context.Samurais.Select(s => new { s.Id, s.Name }).ToList();
-            var idsAndNames = _context.Samurais.Select(s => new IdAndName(s.Id, s.Name)).ToList();
+            var someProperties = _context.Samurai.Select(s => new { s.Id, s.Name }).ToList();
+            var idsAndNames = _context.Samurai.Select(s => new IdAndName(s.Id, s.Name)).ToList();
         }
 
         private static List<dynamic> ProjectDynamic()
         {
-            var someProperties = _context.Samurais.Select(s => new { s.Id, s.Name }).ToList();
+            var someProperties = _context.Samurai.Select(s => new { s.Id, s.Name }).ToList();
             return someProperties.ToList<dynamic>();
         }
 
         private static void EagerLoadSamuraiWithQuotes()
         {
-            var samuraiWithQuotes = _context.Samurais.Where(s => s.Name.Contains("Kyūzō"))
+            var samuraiWithQuotes = _context.Samurai.Where(s => s.Name.Contains("Kyūzō"))
                                                      .Include(s => s.Quotes)
                                                      .Include(s => s.SecretIdentity)
                                                      .FirstOrDefault();
@@ -281,14 +281,14 @@ namespace SomeUI
         {
             try
             {
-                var samurai = _context.Samurais.First();
+                var samurai = _context.Samurai.First();
 
                 using (var newContext = new SamuraiContext()) {
                     var quote = new Quote {
                         Text = "Now that I saved you, will you feed me dinner?"
                     };
                     samurai.Quotes.Add(quote);
-                    newContext.Samurais.Add(samurai);
+                    newContext.Samurai.Add(samurai);
                     newContext.SaveChanges();
                 }
             }
@@ -301,7 +301,7 @@ namespace SomeUI
 
         private static void AddChildToExistingObjectWhileTracked()
         {
-            var samurai = _context.Samurais.First();
+            var samurai = _context.Samurai.First();
             samurai.Quotes.Add(new Quote {
                 Text = "I bet you're happy that I've saved you!"
             });
@@ -317,7 +317,7 @@ namespace SomeUI
                   new Quote {Text="I told you to watch out for the sharp sword! Oh well!" }
                 }
             };
-            _context.Samurais.Add(samurai);
+            _context.Samurai.Add(samurai);
             _context.SaveChanges();
         }
 
@@ -330,7 +330,7 @@ namespace SomeUI
                                  new Quote {Text = "I've come to save you"}
                                }
             };
-            _context.Samurais.Add(samurai);
+            _context.Samurai.Add(samurai);
             _context.SaveChanges();
         }
     }

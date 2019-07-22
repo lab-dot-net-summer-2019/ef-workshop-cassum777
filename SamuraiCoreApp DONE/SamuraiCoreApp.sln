@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.Domain", "SamuraiApp.Domain\SamuraiApp.Domain.csproj", "{C1A889B6-69C2-453B-948A-CAA4A1CAD3D9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.Data", "SamuraiApp.Data\SamuraiApp.Data.csproj", "{08A86D62-C271-4F62-A0F2-252D2A9B5F49}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{2BE2EDC1-8F15-406E-911A-FADF67EA0E7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomeUI", "SomeUI\SomeUI.csproj", "{5963C180-A7A6-4C93-97CD-69531028AC48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SomeUI", "SomeUI\SomeUI.csproj", "{5963C180-A7A6-4C93-97CD-69531028AC48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamuraiApp.Data", "SamuraiApp.Data\SamuraiApp.Data.csproj", "{71BB73BF-6309-429A-B69C-EDA5D97484A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamuraiApp.Domain", "SamuraiApp.Domain\SamuraiApp.Domain.csproj", "{59DDD598-A69B-42BF-B363-3C1289DDF4D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C1A889B6-69C2-453B-948A-CAA4A1CAD3D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1A889B6-69C2-453B-948A-CAA4A1CAD3D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1A889B6-69C2-453B-948A-CAA4A1CAD3D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1A889B6-69C2-453B-948A-CAA4A1CAD3D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08A86D62-C271-4F62-A0F2-252D2A9B5F49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08A86D62-C271-4F62-A0F2-252D2A9B5F49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08A86D62-C271-4F62-A0F2-252D2A9B5F49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08A86D62-C271-4F62-A0F2-252D2A9B5F49}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2BE2EDC1-8F15-406E-911A-FADF67EA0E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2BE2EDC1-8F15-406E-911A-FADF67EA0E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BE2EDC1-8F15-406E-911A-FADF67EA0E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +25,14 @@ Global
 		{5963C180-A7A6-4C93-97CD-69531028AC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5963C180-A7A6-4C93-97CD-69531028AC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5963C180-A7A6-4C93-97CD-69531028AC48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BB73BF-6309-429A-B69C-EDA5D97484A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BB73BF-6309-429A-B69C-EDA5D97484A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BB73BF-6309-429A-B69C-EDA5D97484A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BB73BF-6309-429A-B69C-EDA5D97484A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DDD598-A69B-42BF-B363-3C1289DDF4D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DDD598-A69B-42BF-B363-3C1289DDF4D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DDD598-A69B-42BF-B363-3C1289DDF4D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DDD598-A69B-42BF-B363-3C1289DDF4D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

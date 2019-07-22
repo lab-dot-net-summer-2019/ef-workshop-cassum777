@@ -51,11 +51,11 @@ namespace WebApp.Controllers
         // GET: Quotes/Create
         public IActionResult Create(int samuraiId)
         {
-            ViewData["SamuraiList"] = new SelectList(_context.Samurais, "Id", "Name",samuraiId);
+            ViewData["SamuraiList"] = new SelectList(_context.Samurai, "Id", "Name", samuraiId);
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Text,SamuraiId")] Quote quote)
         {
@@ -66,7 +66,7 @@ namespace WebApp.Controllers
                 return RedirectToAction("Details", "Samurais", new { id = quote.SamuraiId });
             }
             //ViewData["SamuraiId"] = new SelectList(_context.Samurais, "Id", "Id", quote.SamuraiId);
-            return RedirectToAction("Details", "Samurais", new { id = quote.SamuraiId});
+            return RedirectToAction("Details", "Samurais", new { id = quote.SamuraiId });
         }
 
         // GET: Quotes/Edit/5
@@ -81,31 +81,37 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["SamuraiId"] = new SelectList(_context.Samurais, "Id", "Name", quote.SamuraiId);
-            return View(quote); 
+            ViewData["SamuraiId"] = new SelectList(_context.Samurai, "Id", "Name", quote.SamuraiId);
+            return View(quote);
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Text,SamuraiId")] Quote quote) {
-            if (id != quote.Id) {
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Text,SamuraiId")] Quote quote)
+        {
+            if (id != quote.Id)
+            {
                 return NotFound();
             }
-            if (ModelState.IsValid) {
-                try {
+            if (ModelState.IsValid)
+            {
+                try
+                {
                     _context.Update(quote);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException) {
-                    if (!QuoteExists(quote.Id)) {
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!QuoteExists(quote.Id))
+                    {
                         return NotFound();
                     }
                     else { throw; }
                 }
                 return RedirectToAction("Details", "Samurais", new { id = quote.SamuraiId });
             }
-            ViewData["SamuraiId"] = new SelectList(_context.Samurais, "Id", "Id", quote.SamuraiId);
+            ViewData["SamuraiId"] = new SelectList(_context.Samurai, "Id", "Id", quote.SamuraiId);
             return RedirectToAction("Details", "Samurais", new { id = quote.SamuraiId });
         }
 
